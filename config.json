@@ -1,0 +1,12 @@
+{
+  "aliases": [
+    {
+      "name": "name1",
+      "command": "command1"
+    },
+    {
+      "name": "name2",
+      "command": "command2"
+    }
+  ]
+}
