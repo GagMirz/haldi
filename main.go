@@ -6,7 +6,7 @@ import (
 )
 
 func main() {
-	err := manager.InitManager("./config.json")
+	err := manager.ReadConfig("./config.json")
 	if (err != nil) {
 		fmt.Printf("%s", err)
 	}
