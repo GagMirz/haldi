@@ -2,12 +2,29 @@ package main
 
 import (
 	"fmt"
-	"haldi/internal/manager"
+	"os"
+
+	"haldi/internal/commands"
+
+	"github.com/urfave/cli/v2"
 )
 
 func main() {
-	err := manager.ReadConfig("./config.json")
-	if (err != nil) {
-		fmt.Printf("%s", err)
+	app := &cli.App{
+		Name:      "haldi",
+		Usage:     "Repository accessibility extender",
+		Version:   "v0.0.1",
+		UsageText: "haldi command [command options]",
+		Commands: []*cli.Command{
+			&commands.Init,
+		},
+		CommandNotFound: func(cCtx *cli.Context, command string) {
+			fmt.Fprintf(cCtx.App.Writer, "Command %q not found.\n", command)
+		},
+	}
+
+	err := app.Run(os.Args)
+	if err != nil {
+		fmt.Println(err)
 	}
 }

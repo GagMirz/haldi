@@ -1,10 +1,12 @@
 BINARY_NAME=haldi
 BUILD_DIR=./build
 DATA_DIR=/usr/local/haldi
-BIN_LINK_DIR=/usr/local/bin
+BIN_DIR=/usr/local/bin
+CONFIG_DIR=~/.haldi/
+CONFIG_FILE=config.toml
 
-# VERSION=1.0.0
 
+.PHONY: build
 build:
 	@echo "Building the Go application..."
 	go build -o $(BUILD_DIR)/$(BINARY_NAME)
@@ -23,11 +25,16 @@ add-to-path:
 	@echo 'export PATH="$(DATA_DIR):$$PATH"' >> $(FILE)
 	@echo 'Added your_directory_path to PATH in $(FILE)'
 
+# TODO: check before creating if files/directories exist
 install:
-	@echo "Installing the binary to $(BIN_LINK_DIR)..."
-	cp $(BUILD_DIR)/$(BINARY_NAME) $(BIN_LINK_DIR)/
+	@echo "Installing the binary to $(BIN_DIR)..."
+	cp $(BUILD_DIR)/$(BINARY_NAME) $(BIN_DIR)/
 	@echo "Creating haldi data directory $(DATA_DIR)..."
 	sudo mkdir -p $(DATA_DIR)
+	@echo "Creating haldi config file directory in home $(CONFIG_DIR)..."
+	mkdir $(CONFIG_DIR)
+	@echo "Creating haldi config file"
+	touch $(CONFIG_DIR)/$(CONFIG_FILE)
 	@echo "Installation complete! You can run '$(BINARY_NAME)' from the terminal."
 	@echo "Haldi data directory '$(DATA_DIR)' was not added to your path and is required!"
 	@echo "Please add it yourself or use command 'make add-to-path FILE=~/.zshrc'"
@@ -35,7 +42,8 @@ install:
 uninstall:
 	@echo "Removing the binary from $(INSTALLATION_DESTINATION)..."
 	rm -rf $(INSTALLATION_DESTINATION)
-	sudo rmdir $(DATA_DIR)
+	sudo rm -rf $(DATA_DIR)
+	rm -rf $(CONFIG_DIR)
 	@echo "Uninstallation complete!"
 
 default: build
