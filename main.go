@@ -17,6 +17,7 @@ func main() {
 		UsageText: "haldi command [command options]",
 		Commands: []*cli.Command{
 			&commands.Init,
+			&commands.Config,
 		},
 		CommandNotFound: func(cCtx *cli.Context, command string) {
 			fmt.Fprintf(cCtx.App.Writer, "Command %q not found.\n", command)

@@ -3,7 +3,8 @@ BUILD_DIR=./build
 DATA_DIR=/usr/local/haldi
 BIN_DIR=/usr/local/bin
 CONFIG_DIR=~/.haldi/
-CONFIG_FILE=config.toml
+CONFIG_FILE_SOURCE=./sample.config.json
+CONFIG_FILE=config.json
 
 
 .PHONY: build
@@ -34,7 +35,7 @@ install:
 	@echo "Creating haldi config file directory in home $(CONFIG_DIR)..."
 	mkdir $(CONFIG_DIR)
 	@echo "Creating haldi config file"
-	touch $(CONFIG_DIR)/$(CONFIG_FILE)
+	cp $(CONFIG_FILE_SOURCE) $(CONFIG_DIR)/$(CONFIG_FILE)
 	@echo "Installation complete! You can run '$(BINARY_NAME)' from the terminal."
 	@echo "Haldi data directory '$(DATA_DIR)' was not added to your path and is required!"
 	@echo "Please add it yourself or use command 'make add-to-path FILE=~/.zshrc'"

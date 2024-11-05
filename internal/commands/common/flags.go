@@ -17,3 +17,11 @@ func GetPathFlag(usage string) *cli.StringFlag {
 		Usage:   usage,
 	}
 }
+
+func GetAttributeFlag(usage string) *cli.StringFlag {
+	return &cli.StringFlag{
+		Name:    "attribute",
+		Aliases: []string{"a"},
+		Usage:   usage,
+	}
+}
