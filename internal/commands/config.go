@@ -1,11 +1,10 @@
 package commands
 
 import (
-	"encoding/json"
 	"fmt"
-	"os"
 
 	"haldi/internal/commands/common"
+	"haldi/internal/services"
 
 	"github.com/urfave/cli/v2"
 )
@@ -33,26 +32,10 @@ var show = &cli.Command{
 		common.GetAttributeFlag("Show attribute value"),
 	},
 	Action: func(cCtx *cli.Context) error {
-		homeDirectory, err := os.UserHomeDir()
-		if err != nil {
-			return fmt.Errorf("failed to find home directory")
-		}
-
-		file, err := os.Open(homeDirectory + "/.haldi/config.json")
-		if err != nil {
-			return fmt.Errorf("failed to open Json file: %v", err)
-		}
-		defer file.Close()
-
-		var config common.DefaultConfigs
-		if err := json.NewDecoder(file).Decode(&config); err != nil {
-			return fmt.Errorf("failed to read Json file: %v", err)
-		}
-
 		if cCtx.String("attribute") != "" {
 			switch cCtx.String("attribute") {
 			case "shell":
-				fmt.Println(config.Shell)
+				fmt.Println(services.Cfg.Shell)
 			default:
 				return fmt.Errorf("attribute not found")
 			}
@@ -60,8 +43,8 @@ var show = &cli.Command{
 			return nil
 		}
 
-		// Show all attributes
-		fmt.Println("Shell: ", config.Shell)
+		// Show all attributes one by one
+		fmt.Println("Shell: ", services.Cfg.Shell)
 		return nil
 	},
 }
@@ -74,48 +57,18 @@ var set = &cli.Command{
 		common.GetAttributeFlag("Set attribute value"),
 	},
 	Action: func(cCtx *cli.Context) error {
-		homeDirectory, err := os.UserHomeDir()
-		if err != nil {
-			return fmt.Errorf("failed to find home directory")
-		}
-
-		file, err := os.Open(homeDirectory + "/.haldi/config.json")
-		if err != nil {
-			return fmt.Errorf("failed to open json file: %v", err)
-		}
-		defer file.Close()
-
-		var config common.DefaultConfigs
-		if err := json.NewDecoder(file).Decode(&config); err != nil {
-			return fmt.Errorf("failed to read json file: %v", err)
-		}
-
 		if cCtx.String("attribute") != "" {
 			switch cCtx.String("attribute") {
 			case "shell":
-				config.Shell = cCtx.Args().First()
+				services.Cfg.Shell = cCtx.Args().First()
 			default:
 				return fmt.Errorf("attribute not found")
 			}
 		} else {
-			return fmt.Errorf("please set attribute and value FE: haldi config set shell /bin/bash")
+			return fmt.Errorf("please set attribute and value FE: `haldi config set shell /bin/bash`")
 		}
 
-		file, err = os.Create(homeDirectory + "/.haldi/config.json")
-		if err != nil {
-			return fmt.Errorf("failed to create json file: %v", err)
-		}
-		defer file.Close()
-
-		jsonStr, err := json.MarshalIndent(config, "", " ")
-		if err != nil {
-			return fmt.Errorf("failed to marshal json: %v", err)
-		}
-
-		_, err = file.WriteString(string(jsonStr))
-		if err != nil {
-			return fmt.Errorf("failed to write to json file: %v", err)
-		}
+		services.OverwriteConfig()
 
 		fmt.Println("Attribute set successfully")
 		return nil

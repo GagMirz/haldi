@@ -5,11 +5,14 @@ import (
 	"os"
 
 	"haldi/internal/commands"
+	"haldi/internal/services"
 
 	"github.com/urfave/cli/v2"
 )
 
 func main() {
+	services.InitConfig()
+
 	app := &cli.App{
 		Name:      "haldi",
 		Usage:     "Repository accessibility extender",
