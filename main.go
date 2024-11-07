@@ -10,6 +10,9 @@ import (
 	"github.com/urfave/cli/v2"
 )
 
+// TODO: Unify error messages
+// TODO: Add command to check manifest directory for corrupted manifests and non-json files
+
 func main() {
 	services.InitConfig()
 
@@ -21,6 +24,9 @@ func main() {
 		Commands: []*cli.Command{
 			&commands.Init,
 			&commands.Config,
+			&commands.Apply,
+			&commands.List,
+			&commands.Remove,
 		},
 		CommandNotFound: func(cCtx *cli.Context, command string) {
 			fmt.Fprintf(cCtx.App.Writer, "Command %q not found.\n", command)

@@ -23,7 +23,6 @@ var Config = cli.Command{
 	},
 }
 
-// TODO: Move this to a separate file, as it should be available for all commands
 var show = &cli.Command{
 	Name:        "show",
 	Category:    "config",
@@ -43,7 +42,6 @@ var show = &cli.Command{
 			return nil
 		}
 
-		// Show all attributes one by one
 		fmt.Println("Shell: ", services.Cfg.Shell)
 		return nil
 	},
