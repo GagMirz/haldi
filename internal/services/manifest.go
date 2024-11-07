@@ -9,7 +9,9 @@ import (
 )
 
 type Manifest struct {
-	Name string `json:"name"`
+	Name    string  `json:"name"`
+	Path    string  `json:"path"`
+	Aliases []Alias `json:"aliases"`
 }
 
 var Mnfst *Manifest

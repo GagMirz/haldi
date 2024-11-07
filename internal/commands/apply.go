@@ -35,11 +35,12 @@ var Apply = cli.Command{
 		}
 
 		// TODO: Do sanity checks on the manifest file
-
 		manifest, err := utils.ReadJson[services.Manifest](path)
 		if err != nil {
 			return fmt.Errorf("failed to read manifest: %v", err)
 		}
+
+		// TODO: Add path to the manifest in Manifest struct
 
 		err = utils.WriteJson(services.ManifestDir+"/"+manifest.Name+".json", manifest)
 		if err != nil {
