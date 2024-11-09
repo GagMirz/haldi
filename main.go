@@ -27,6 +27,7 @@ func main() {
 			&commands.Apply,
 			&commands.List,
 			&commands.Remove,
+			&commands.Run,
 		},
 		CommandNotFound: func(cCtx *cli.Context, command string) {
 			fmt.Fprintf(cCtx.App.Writer, "Command %q not found.\n", command)

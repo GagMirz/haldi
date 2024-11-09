@@ -2,6 +2,7 @@ package commands
 
 import (
 	"fmt"
+	"os"
 	"strings"
 
 	"haldi/internal/commands/common"
@@ -40,9 +41,26 @@ var Apply = cli.Command{
 			return fmt.Errorf("failed to read manifest: %v", err)
 		}
 
-		// TODO: Add path to the manifest in Manifest struct
+		projectPath := strings.TrimSuffix(path, "/haldi.json")
+		manifest.Path = projectPath
 
-		err = utils.WriteJson(services.ManifestDir+"/"+manifest.Name+".json", manifest)
+		appliedManifestPath := services.ManifestDir + "/" + manifest.Name + ".json"
+
+		if _, err := os.Stat(appliedManifestPath); !os.IsNotExist(err) {
+			var overwrite string
+			fmt.Printf("File %s already exists, do you want to overwrite it? (yes/no): ", appliedManifestPath)
+			fmt.Scanf("%s", &overwrite)
+
+			if overwrite != "yes" {
+				return fmt.Errorf("command aborted")
+			}
+
+			if err := os.Remove(appliedManifestPath); err != nil {
+				return fmt.Errorf("could not remove existing file: %w", err)
+			}
+		}
+
+		err = utils.WriteJson(appliedManifestPath, manifest)
 		if err != nil {
 			return fmt.Errorf("failed to apply manifest: %v", err)
 		}

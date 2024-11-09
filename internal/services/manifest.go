@@ -10,7 +10,7 @@ import (
 
 type Manifest struct {
 	Name    string  `json:"name"`
-	Path    string  `json:"path"`
+	Path    string  `json:"path,omitempty"`
 	Aliases []Alias `json:"aliases"`
 }
 

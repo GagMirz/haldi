@@ -28,14 +28,14 @@ var Init = cli.Command{
 			return err
 		}
 
-		// TODO: make name not required, use repository name as default
-		if name == "" {
-			return fmt.Errorf("name is required, please provide name with -n flag")
-		}
-
 		absolutePath, err := common.GetPathFlagValue(cCtx)
 		if err != nil {
 			return err
+		}
+
+		if name == "" {
+			fmt.Println("Name is required, trying to determine parent directory name")
+			name = filepath.Base(absolutePath)
 		}
 
 		if err := os.MkdirAll(absolutePath, os.ModePerm); err != nil {
@@ -59,7 +59,8 @@ var Init = cli.Command{
 		}
 
 		manifest := services.Manifest{
-			Name: name,
+			Name:    name,
+			Aliases: []services.Alias{},
 		}
 
 		err = utils.WriteJson(filePath, &manifest)
