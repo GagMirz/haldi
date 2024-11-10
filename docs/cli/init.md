@@ -1,4 +1,4 @@
-## Initializes haldi manifest in project
+## Initialize haldi manifest in project
 
 Command
 ```bash
