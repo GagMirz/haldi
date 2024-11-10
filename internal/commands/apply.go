@@ -36,6 +36,8 @@ var Apply = cli.Command{
 		}
 
 		// TODO: Do sanity checks on the manifest file
+		// 1) Check aliases for duplicates
+		// 2) Check if all aliases are valid
 		manifest, err := utils.ReadJson[services.Manifest](path)
 		if err != nil {
 			return fmt.Errorf("failed to read manifest: %v", err)

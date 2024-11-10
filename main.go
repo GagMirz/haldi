@@ -11,6 +11,7 @@ import (
 )
 
 // TODO: Unify error messages
+// TODO: Add license to repository
 // TODO: Add command to check manifest directory for corrupted manifests and non-json files
 
 func main() {
