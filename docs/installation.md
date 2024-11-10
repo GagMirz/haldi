@@ -13,7 +13,7 @@
 make build && make install
 ```
 
-This commands would
+These commands would
 - Build binaries from source
 - Install haldi terminal tool in ```/usr/local/bin```
 - Create haldi configuration directory in ```~/```
