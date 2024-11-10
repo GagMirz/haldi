@@ -1,0 +1,9 @@
+- [Home](home.md)
+- [Installation](installation.md)
+- CLI
+  - [Init](cli/init.md)
+  - [Config](cli/config.md)
+  - [Apply](cli/apply.md)
+  - [List](cli/list.md)
+  - [Remove](cli/remove.md)
+  - [Run](cli/run.md)

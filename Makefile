@@ -11,24 +11,32 @@ build:
 	go build -o $(BUILD_DIR)/$(BINARY_NAME)
 	@echo "Build complete! Binary is located at $(BUILD_DIR)/$(BINARY_NAME)"
 
+.PHONY: clean
 clean:
 	@echo "Cleaning up..."
 	rm -rf $(BUILD_DIR)
 	@echo "Clean up complete!"
 
+.PHONY: install
 install:
 	@echo "Installing the binary to $(BIN_DIR)..."
 	cp $(BUILD_DIR)/$(BINARY_NAME) $(BIN_DIR)/
-	@echo "Creating haldi directory in home $(CONFIG_DIR)..."
+	@echo "Creating haldi directory in $(CONFIG_DIR)..."
 	mkdir -p $(CONFIG_DIR)/manifests
 	@echo "Creating haldi config file"
 	cp $(CONFIG_FILE_SOURCE) $(CONFIG_DIR)/$(CONFIG_FILE)
-	@echo "Installation complete! You can run '$(BINARY_NAME)' from the terminal."
+	@echo "Installation completed! You can run '$(BINARY_NAME)' from the terminal."
 
+.PHONY: uninstall
 uninstall:
-	@echo "Removing the binary from $(INSTALLATION_DESTINATION)..."
+	@echo "Removing haldi binary from $(INSTALLATION_DESTINATION)..."
 	rm -rf $(INSTALLATION_DESTINATION)
 	rm -rf $(CONFIG_DIR)
-	@echo "Uninstallation complete!"
+	@echo "Uninstallation completed!"
+
+.PHONY: docs
+docs:
+	@echo "Runing docsify server..."
+	docsify serve docs
 
 default: build
