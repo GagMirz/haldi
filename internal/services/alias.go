@@ -7,6 +7,7 @@ import (
 	"strings"
 )
 
+// TODO: Add requirements field, where all required software is listed
 type Alias struct {
 	Name    string `json:"name"`
 	Command string `json:"command"`

@@ -15,6 +15,7 @@ var Config = cli.Command{
 	Description: "configs haldi CLI default behavior",
 	Flags:       []cli.Flag{},
 	Action: func(cCtx *cli.Context) error {
+		// TODO: Add help message for subcommands
 		return nil
 	},
 	Subcommands: []*cli.Command{

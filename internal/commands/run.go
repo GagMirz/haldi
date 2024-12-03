@@ -10,6 +10,7 @@ import (
 	"github.com/urfave/cli/v2"
 )
 
+// TODO: Add ability to source environment from parent process
 var Run = cli.Command{
 	Name:        "run",
 	Category:    "manifest",

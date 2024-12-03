@@ -39,4 +39,9 @@ docs:
 	@echo "Runing docsify server..."
 	docsify serve docs
 
+.PHONY: docs-install
+docs-install:
+	@echo "Installing docsify..."
+	npm i docsify-cli -g
+
 default: build

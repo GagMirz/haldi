@@ -13,6 +13,9 @@ import (
 // TODO: Unify error messages
 // TODO: Add license to repository
 // TODO: Add command to check manifest directory for corrupted manifests and non-json files
+// TODO: Add feature to restore manifest file from applied manifests
+// TODO: Add global manifest option, so manifest won't be tied to project/repository
+// TODO: Add errorHint attribute to manifest, so user can get hints on how to fix the error
 
 func main() {
 	services.InitConfig()
