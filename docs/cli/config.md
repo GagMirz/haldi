@@ -39,10 +39,6 @@ haldi config set
 ```bash
 haldi config set -a shell bash
 ```
-Result:
-```bash
-Attribute set successfully
-```
 <!-- # Supported shells
  - zsh
  - bash

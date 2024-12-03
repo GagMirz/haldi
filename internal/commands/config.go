@@ -57,14 +57,14 @@ var set = &cli.Command{
 	},
 	Action: func(cCtx *cli.Context) error {
 		if cCtx.String("attribute") != "" {
-			switch cCtx.String("attribute") {
-			case "shell":
-				services.Cfg.Shell = cCtx.Args().First()
-			default:
-				return fmt.Errorf("attribute not found")
-			}
-		} else {
 			return fmt.Errorf("please set attribute and value FE: `haldi config set shell /bin/bash`")
+		}
+
+		switch cCtx.String("attribute") {
+		case "shell":
+			services.Cfg.Shell = cCtx.Args().First()
+		default:
+			return fmt.Errorf("attribute not found")
 		}
 
 		services.OverwriteConfig()

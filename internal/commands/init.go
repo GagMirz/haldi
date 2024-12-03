@@ -34,6 +34,7 @@ var Init = cli.Command{
 		}
 
 		if name == "" {
+			// TODO: Ask user for name
 			fmt.Println("Name is required, trying to determine parent directory name")
 			name = filepath.Base(absolutePath)
 		}
