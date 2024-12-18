@@ -1,6 +1,4 @@
+<!-- TODO: Add content to this page -->
 # Home
 
 ## Haldi
-
-## Issues
-<!-- TODO: Add issues -->

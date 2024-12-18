@@ -4,6 +4,7 @@ import (
 	"fmt"
 
 	"haldi/internal/services"
+	"haldi/internal/utils"
 
 	"github.com/urfave/cli/v2"
 )
@@ -58,8 +59,13 @@ var set = &cli.Command{
 
 		switch attribute {
 		case "shell":
+			value := cCtx.Args().Get(1)
+
+			if utils.Contains([]string{"zsh", "bash", "sh", "ksh", "dash"}, value) {
+				return fmt.Errorf("unsupported shell")
+			}
+
 			services.Cfg.Shell = cCtx.Args().Get(1)
-			// TODO: Add validation for available values
 		default:
 			return fmt.Errorf("attribute not found")
 		}

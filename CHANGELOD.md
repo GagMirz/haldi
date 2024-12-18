@@ -18,3 +18,6 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - list cli command
 - remove cli command
 - Makefile with build, install, remove and utils commands
+- Documentation
+- License
+- Contribution rules

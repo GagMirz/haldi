@@ -1,0 +1,46 @@
+name: release
+
+on:
+  push:
+    tags:        
+      - '**'           # Push events to every tag including hierarchical tags like v1.0/beta
+
+jobs:
+  release-job:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - name: Set up Go 1.18
+        uses: actions/setup-go@v5
+        with:
+          go-version: '1.18'
+
+      - name: Cache Go modules
+        uses: actions/cache@v3
+        with:
+          path: |
+            ~/.cache/go-build
+            ~/go/pkg/mod
+          key: ${{ runner.os }}-go-${{ hashFiles('**/go.sum') }}
+          restore-keys: |
+            ${{ runner.os }}-go-
+
+      - name: Build Go binaries
+        run: |
+          VERSION=${GITHUB_REF#refs/tags/}  # Extract the version from the tag (e.g., 'v1.0.0')
+          echo "Building version $VERSION"
+          mkdir -p dist
+          GOOS=linux GOARCH=amd64 go build -o dist/haldi-linux-amd64-$VERSION .
+          GOOS=darwin GOARCH=amd64 go build -o dist/haldi-darwin-amd64-$VERSION .
+
+      - name: Create GitHub release
+        uses: softprops/action-gh-release@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  # Use the GitHub token for authentication
+        with:
+          files: |
+            dist/haldi-linux-amd64-${{ github.ref_name }}
+            dist/haldi-darwin-amd64-${{ github.ref_name }}
