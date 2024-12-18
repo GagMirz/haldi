@@ -3,8 +3,8 @@ name: release
 on:
   push:
     tags:        
-      - '**'           # Push events to every tag including hierarchical tags like v1.0/beta
-
+      - '**'         # Push events to every tag including hierarchical tags like v1.0/beta
+  workflow_dispatch: # Manually trigger the workflow
 jobs:
   release-job:
     runs-on: ubuntu-latest
