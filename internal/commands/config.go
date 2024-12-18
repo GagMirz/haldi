@@ -3,7 +3,6 @@ package commands
 import (
 	"fmt"
 
-	"haldi/internal/commands/common"
 	"haldi/internal/services"
 
 	"github.com/urfave/cli/v2"
@@ -28,22 +27,19 @@ var show = &cli.Command{
 	Name:        "show",
 	Category:    "config",
 	Description: "shows haldi CLI default configurations",
-	Flags: []cli.Flag{
-		common.GetAttributeFlag("Show attribute value"),
-	},
+	Flags:       []cli.Flag{},
 	Action: func(cCtx *cli.Context) error {
-		if cCtx.String("attribute") != "" {
-			switch cCtx.String("attribute") {
-			case "shell":
-				fmt.Println(services.Cfg.Shell)
-			default:
-				return fmt.Errorf("attribute not found")
-			}
-
-			return nil
+		attribute := cCtx.Args().Get(0)
+		switch attribute {
+		case "shell":
+			fmt.Println(services.Cfg.Shell)
+		case "":
+			// List all available attributes
+			fmt.Println("Shell: ", services.Cfg.Shell)
+		default:
+			return fmt.Errorf("attribute not found")
 		}
 
-		fmt.Println("Shell: ", services.Cfg.Shell)
 		return nil
 	},
 }
@@ -52,17 +48,18 @@ var set = &cli.Command{
 	Name:        "set",
 	Category:    "config",
 	Description: "sets haldi CLI default configurations by attribute",
-	Flags: []cli.Flag{
-		common.GetAttributeFlag("Set attribute value"),
-	},
+	Flags:       []cli.Flag{},
 	Action: func(cCtx *cli.Context) error {
-		if cCtx.String("attribute") != "" {
+		attribute := cCtx.Args().Get(0)
+
+		if attribute == "" {
 			return fmt.Errorf("please set attribute and value FE: `haldi config set shell /bin/bash`")
 		}
 
-		switch cCtx.String("attribute") {
+		switch attribute {
 		case "shell":
-			services.Cfg.Shell = cCtx.Args().First()
+			services.Cfg.Shell = cCtx.Args().Get(1)
+			// TODO: Add validation for available values
 		default:
 			return fmt.Errorf("attribute not found")
 		}

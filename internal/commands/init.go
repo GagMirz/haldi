@@ -19,24 +19,21 @@ var Init = cli.Command{
 	Category:    "config",
 	Description: "creates .haldi.json config file with basic structure",
 	Flags: []cli.Flag{
-		common.GetNameFlag("Configuration name, will be used for calling commands"),
 		common.GetPathFlag("Path, where to create .haldi.json, defaults to '.'"),
 	},
 	Action: func(cCtx *cli.Context) error {
-		name, err := common.GetNameFlagValue(cCtx)
-		if err != nil {
-			return err
-		}
-
+		name := cCtx.Args().Get(0)
 		absolutePath, err := common.GetPathFlagValue(cCtx)
 		if err != nil {
 			return err
 		}
 
 		if name == "" {
-			// TODO: Ask user for name
-			fmt.Println("Name is required, trying to determine parent directory name")
 			name = filepath.Base(absolutePath)
+			confirmation := utils.RequestConfirmation(fmt.Sprintf("Manifest name was not provided, would you like to use parent directory name %s? (yes/no)", name))
+			if !confirmation {
+				return fmt.Errorf("command aborted")
+			}
 		}
 
 		if err := os.MkdirAll(absolutePath, os.ModePerm); err != nil {
@@ -46,11 +43,8 @@ var Init = cli.Command{
 		filePath := filepath.Join(absolutePath, ManifestFileName)
 
 		if _, err := os.Stat(filePath); !os.IsNotExist(err) {
-			var overwrite string
-			fmt.Printf("File %s already exists, do you want to overwrite it? (yes/no): ", filePath)
-			fmt.Scanf("%s", &overwrite)
-
-			if overwrite != "yes" {
+			confirmation := utils.RequestConfirmation(fmt.Sprintf("File %s already exists, do you want to overwrite it? (yes/no): ", filePath))
+			if !confirmation {
 				return fmt.Errorf("command aborted")
 			}
 

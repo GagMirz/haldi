@@ -2,15 +2,6 @@
 
 ### Command
 ```bash
-haldi apply
+haldi apply [MANIFEST_PATH]
 ```
-Applies haldi.json manifest, adding it to user manifests.
-
-#### Arguments
-1. Path: (-p, --path) path to the project.  
-  Default: ```./```.  
-  __Note__: manifest should be named ```haldi.json```, if file name was not provided it will be automatically extended.  
-  Example:
-```bash
-haldi apply -p ~/projects/my-awesome-project/haldi.json
-```
+Applies haldi.json manifest from [MANIFEST_PATH], adding it to user manifests. If [MANIFEST_PATH] was not specified haldi will try to apply manifest ```./haldi.json``` in current directory.

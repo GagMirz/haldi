@@ -5,7 +5,6 @@ import (
 	"os"
 	"strings"
 
-	"haldi/internal/commands/common"
 	"haldi/internal/services"
 	"haldi/internal/utils"
 
@@ -16,16 +15,13 @@ var Apply = cli.Command{
 	Name:        "apply",
 	Category:    "config",
 	Description: "applies haldi manifest",
-	Flags: []cli.Flag{
-		common.GetPathFlag("Path to the configuration file"),
-	},
+	Flags:       []cli.Flag{},
 	Action: func(cCtx *cli.Context) error {
-		path, err := common.GetPathFlagValue(cCtx)
-		if err != nil {
-			return err
+		path := cCtx.Args().Get(0)
+		if path == "" {
+			path = "."
 		}
 
-		// If path doesn't include haldi.json string in it, add it
 		if !strings.HasSuffix(path, services.ManifestDir) {
 			newSuffix := "haldi.json"
 			if !strings.HasSuffix(path, "/") {
@@ -49,11 +45,8 @@ var Apply = cli.Command{
 		appliedManifestPath := services.ManifestDir + "/" + manifest.Name + ".json"
 
 		if _, err := os.Stat(appliedManifestPath); !os.IsNotExist(err) {
-			var overwrite string
-			fmt.Printf("File %s already exists, do you want to overwrite it? (yes/no): ", appliedManifestPath)
-			fmt.Scanf("%s", &overwrite)
-
-			if overwrite != "yes" {
+			confirmation := utils.RequestConfirmation(fmt.Sprintf("File %s already exists, do you want to overwrite it? (yes/no): ", appliedManifestPath))
+			if !confirmation {
 				return fmt.Errorf("command aborted")
 			}
 

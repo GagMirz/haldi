@@ -5,7 +5,6 @@ import (
 	"os"
 	"path/filepath"
 
-	"haldi/internal/commands/common"
 	"haldi/internal/services"
 	"haldi/internal/utils"
 
@@ -16,11 +15,9 @@ var Remove = cli.Command{
 	Name:        "remove",
 	Category:    "manifest",
 	Description: "remove haldi manifest",
-	Flags: []cli.Flag{
-		common.GetNameFlag("Manifest name"),
-	},
+	Flags:       []cli.Flag{},
 	Action: func(cCtx *cli.Context) error {
-		name := cCtx.String("attribute")
+		name := cCtx.Args().Get(0)
 
 		if name == "" {
 			path, err := filepath.Abs(".")

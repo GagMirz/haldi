@@ -2,13 +2,6 @@
 
 ### Command
 ```bash
-haldi remove
+haldi remove [MANIFEST_NAME]
 ```
-Removes applied manifest for user, if manifest name is not specified, haldi will try to remove manifest connected ```./haldi.json```.
-
-#### Arguments
-1. Name: (-n, --name) manifest name.  
-  Example:
-```bash
-haldi remove -n some-project-manifest-name
-```
+Removes applied manifest [MANIFEST_NAME] for user, if [MANIFEST_NAME] was not specified, haldi will try to remove manifest connected ```./haldi.json``` in current directory.

@@ -7,24 +7,6 @@ import (
 	"github.com/urfave/cli/v2"
 )
 
-func GetNameFlag(usage string) *cli.StringFlag {
-	return &cli.StringFlag{
-		Name:    "name",
-		Aliases: []string{"n"},
-		Usage:   usage,
-	}
-}
-
-func GetNameFlagValue(cCtx *cli.Context) (string, error) {
-	name := cCtx.String("name")
-
-	if cCtx.IsSet("name") && name == "" {
-		return "", fmt.Errorf("-n flag requires a string value")
-	}
-
-	return name, nil
-}
-
 func GetPathFlag(usage string) *cli.StringFlag {
 	return &cli.StringFlag{
 		Name:    "path",
@@ -50,12 +32,4 @@ func GetPathFlagValue(cCtx *cli.Context) (string, error) {
 	}
 
 	return absolutePath, nil
-}
-
-func GetAttributeFlag(usage string) *cli.StringFlag {
-	return &cli.StringFlag{
-		Name:    "attribute",
-		Aliases: []string{"a"},
-		Usage:   usage,
-	}
 }

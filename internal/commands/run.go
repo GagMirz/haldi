@@ -17,7 +17,7 @@ var Run = cli.Command{
 	Description: "run haldi manifest alias",
 	Flags:       []cli.Flag{},
 	Action: func(cCtx *cli.Context) error {
-		name := cCtx.Args().First()
+		name := cCtx.Args().Get(0)
 		manifestPath := services.ManifestDir + "/" + name + ".json"
 
 		if _, err := os.Stat(manifestPath); os.IsNotExist(err) {

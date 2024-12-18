@@ -1,5 +1,9 @@
 - [Home](home.md)
 - [Installation](installation.md)
+- [Contribution](contribution.md)
+  - [Code Of Conduct](code_of_conduct.md)
+- [License](license.md)
+- Manifest Files
 - CLI
   - [Config](cli/config.md)
   - [Init](cli/init.md)

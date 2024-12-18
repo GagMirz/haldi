@@ -37,7 +37,7 @@ uninstall:
 .PHONY: docs
 docs:
 	@echo "Runing docsify server..."
-	docsify serve docs
+	docsify serve docs --port 6969
 
 .PHONY: docs-install
 docs-install:

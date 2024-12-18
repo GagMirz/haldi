@@ -2,46 +2,37 @@
 
 ### Command
 ```bash
-haldi config
+haldi config [SUBCOMMAND]
 ```
 
 List or Modify haldi cli user configurations
 
+## Available configurations
+
+- shell: sets which shell should be used for running haldi aliases
+  - Available values are zsh, bash, dash, ksh, sh
+
 ## Subcommands
 ### show
-lists config value pairs
 ```bash
-haldi config show
+haldi config show [ATTRIBUTE]
 ```
+If [ATTRIBUTE] is not specified lists all haldi cli configurations attributes with their values  
 Result:
 ```bash
 Shell:  zsh
 Config2:  value
 Config3:  other-value
 ```
-#### Arguments
-  1. Attribute: (-a, --attribute) shows only specified attribute (Case insensitive)
-```bash
-haldi config show -a shell
-```
+if [ATTRIBUTE] is specified shows only attributes value  
+F.E. ```haldi config show shell```)  
 Result:
 ```bash
 zsh
 ```
 
 ### set
-sets config value for attribute
 ```bash
-haldi config set
+haldi config set [ATTRIBUTE] [VALUE]
 ```
-#### Arguments
-  1. Attribute: (-a, --attribute) attribute to set value (Case insensitive)
-```bash
-haldi config set -a shell bash
-```
-<!-- # Supported shells
- - zsh
- - bash
- - dash
- - ksh
- - sh -->
+Updates [ATTRIBUTE] configuration with [VALUE]

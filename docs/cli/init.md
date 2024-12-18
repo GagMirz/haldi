@@ -2,19 +2,12 @@
 
 ### Command
 ```bash
-haldi init
+haldi init [MANIFEST_NAME]
 ```
-Initialize haldi manifest in project (Creates haldi.json manifest in project).
+Initialize haldi manifest in project (Creates haldi.json file in project). If [MANIFEST_NAME] was not specified haldi will try to use parent directory name.
 
 #### Arguments
-1. Name: (-n, --name) add manifest name, this will be used for later manifest usage.  
-  Default: project directory name.  
-  Example:
-```bash
-haldi init -n hld
-```
-
-2. Path: (-p, --path) path to the project.  
+1. Path: (-p, --path) path to the project.  
   Default: ```./```.  
   Example:
 ```bash
