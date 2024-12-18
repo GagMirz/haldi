@@ -22,7 +22,7 @@ var Apply = cli.Command{
 			path = "."
 		}
 
-		if !strings.HasSuffix(path, services.ManifestDir) {
+		if !strings.HasSuffix(path, services.ManifestDirAbsPath) {
 			newSuffix := "haldi.json"
 			if !strings.HasSuffix(path, "/") {
 				newSuffix = "/" + newSuffix
@@ -42,7 +42,7 @@ var Apply = cli.Command{
 		projectPath := strings.TrimSuffix(path, "/haldi.json")
 		manifest.Path = projectPath
 
-		appliedManifestPath := services.ManifestDir + "/" + manifest.Name + ".json"
+		appliedManifestPath := services.ManifestDirAbsPath + "/" + manifest.Name + ".json"
 
 		if _, err := os.Stat(appliedManifestPath); !os.IsNotExist(err) {
 			confirmation := utils.RequestConfirmation(fmt.Sprintf("File %s already exists, do you want to overwrite it? (yes/no): ", appliedManifestPath))

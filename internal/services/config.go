@@ -8,9 +8,10 @@ import (
 )
 
 var (
-	ConfigPath  = "/.haldi/config.json"
-	HomeDir     string
-	ManifestDir string
+	ConfigPath         = "/.haldi/config.json"
+	ManifestPath       = "/.haldi/manifests"
+	HomeDir            string
+	ManifestDirAbsPath string
 )
 
 type Configs struct {
@@ -26,7 +27,24 @@ func InitConfig() error {
 	}
 
 	HomeDir = homeDirectory
-	ManifestDir = HomeDir + "/.haldi/manifests"
+	ManifestDirAbsPath = HomeDir + ManifestPath
+
+	if _, err := os.Stat(ManifestDirAbsPath); os.IsNotExist(err) {
+		err := os.MkdirAll(ManifestDirAbsPath, os.ModePerm)
+		if err != nil {
+			return fmt.Errorf("failed to create manifest dir: %v", err)
+		}
+	}
+
+	// Check if config files exists
+	configFileAbsPath := HomeDir + ConfigPath
+	if _, err := os.Stat(configFileAbsPath); os.IsNotExist(err) {
+		// Create default config file
+		err := utils.WriteJson[Configs](configFileAbsPath, &Configs{Shell: "bash"})
+		if err != nil {
+			return fmt.Errorf("failed to create haldi default configurations: %v", err)
+		}
+	}
 
 	Cfg, err = utils.ReadJson[Configs](HomeDir + ConfigPath)
 	if err != nil {

@@ -17,7 +17,7 @@ var Run = cli.Command{
 	Flags:       []cli.Flag{},
 	Action: func(cCtx *cli.Context) error {
 		name := cCtx.Args().Get(0)
-		manifestPath := services.ManifestDir + "/" + name + ".json"
+		manifestPath := services.ManifestDirAbsPath + "/" + name + ".json"
 
 		if _, err := os.Stat(manifestPath); os.IsNotExist(err) {
 			return fmt.Errorf("manifest %s does not exist", name)

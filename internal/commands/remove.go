@@ -35,7 +35,7 @@ var Remove = cli.Command{
 			name = manifest.Name
 		}
 
-		manifestPath := services.ManifestDir + "/" + name + ".json"
+		manifestPath := services.ManifestDirAbsPath + "/" + name + ".json"
 
 		if _, err := os.Stat(manifestPath); os.IsNotExist(err) {
 			return fmt.Errorf("manifest %s does not exist", name)

@@ -29,7 +29,7 @@ func InitManifest(path string) error {
 
 func ListManifestNames() ([]string, error) {
 	// List file names from manifest directory
-	files, err := os.ReadDir(ManifestDir)
+	files, err := os.ReadDir(ManifestDirAbsPath)
 	if err != nil {
 		return nil, fmt.Errorf("failed to read manifest directory: %v", err)
 	}

@@ -16,7 +16,8 @@ make build && make install
 These commands would
 - Build binaries from source
 - Install haldi terminal tool in ```/usr/local/bin```
-- Create haldi configuration directory in ```~/```
+- On initial run, haldi will
+    - Create haldi configuration directory in user home as ```~/.haldi```
 
 ### Dev requirements
 - docsify (npm)
