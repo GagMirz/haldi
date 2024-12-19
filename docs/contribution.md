@@ -1,4 +1,4 @@
-# Contributing to Haldi
+## Contributing to Haldi
 
 Thank you for considering contributing to Haldi!  
 I appreciate your time and effort to help improve this project.
@@ -17,18 +17,19 @@ All types of contributions are encouraged and valued. Please make sure to read t
 2. Clone your fork locally.
 3. Create a new branch for your changes.
 4. Add your changes
-4. Update documentation accordingly.
+5. Update documentation accordingly.
+6. Add changes to changelog
 <!-- TODO: Add this section once tests are available -->
 <!-- Write unit tests for your code (see [Tests](#tests)).  -->
-5. Push your changes to your fork on GitHub.
-6. Create a Pull Request (PR) in the project repository, providing a clear description of your changes and linking to any relevant issues or discussions.
+7. Push your changes to your fork on GitHub.
+8. Create a Pull Request (PR) in the project repository, providing a clear description of your changes and linking to any relevant issues or discussions.
 
 ## Reporting Enhancement Requests
 
 If you would like to request a new feature or suggest an enhancement for this project, please follow these steps:
 
 1. **Search for existing enhancement requests**  
-   Before submitting a new enhancement request, please check the [existing issues](https://github.com/GagMirz/haldi/issues) to ensure your idea hasn't already been suggested. This helps to avoid duplicates and keeps the project organized.
+   Before submitting a new enhancement request, please check the [existing issues](https://github.com/GagMirz/haldi/issues) or [planning kanban Todo column](https://github.com/users/GagMirz/projects/1) to ensure your idea hasn't already been suggested. This helps to avoid duplicates and keeps the project organized.
 
 2. **Create a new issue**  
    If you don’t find an existing request, create a new issue by clicking on the "New issue" button in the [Issues section](https://github.com/GagMirz/haldi/issues).
@@ -44,7 +45,7 @@ If you would like to request a new feature or suggest an enhancement for this pr
 If you encounter a bug or have a feature request, please follow the steps below to report an issue:
 
 1. **Search for existing issues**  
-   Before creating a new issue, please check if the issue has already been reported by searching through the [existing issues](https://github.com/GagMirz/haldi/issues). This will help avoid duplicates.
+   Before creating a new issue, please check if the issue has already been reported by searching through the [existing issues](https://github.com/GagMirz/haldi/issues) or issue exists in [planning kanban Bugs column](https://github.com/users/GagMirz/projects/1). This will help avoid duplicates.
 
 2. **Create a new issue**  
    If you don’t find an existing issue, open a new one by clicking on the "New issue" button in the [Issues section](https://github.com/GagMirz/haldi/issues).

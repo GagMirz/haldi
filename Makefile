@@ -36,4 +36,15 @@ docs-install:
 	@echo "Installing docsify..."
 	npm i docsify-cli -g
 
+.PHONY: tag-and-release
+tag-and-release:
+	@if [ -z "$(TAG_NAME)" ]; then \
+		echo "Error: You must specify a tag name."; \
+		exit 1; \
+	fi; \
+	echo "Creating tag $(TAG_NAME)..."; \
+	git tag $(TAG_NAME); \
+	echo "Pushing tag $(TAG_NAME) to remote origin..."; \
+	git push origin $(TAG_NAME)
+
 default: build

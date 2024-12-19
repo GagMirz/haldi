@@ -1,6 +1,9 @@
-# Installation
+## Installation
 
 <!-- TODO: Add simpler way for installation -->
+
+## Build files
+You can see latest releases and build files available in [GitHub Releases](https://github.com/GagMirz/haldi/releases)
 
 ## From source files
 
