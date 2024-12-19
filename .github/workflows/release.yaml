@@ -2,9 +2,8 @@ name: release
 
 on:
   push:
-    tags:        
+    tags:
       - '**'         # Push events to every tag including hierarchical tags like v1.0/beta
-  workflow_dispatch: # Manually trigger the workflow
 jobs:
   release-job:
     runs-on: ubuntu-latest
@@ -34,7 +33,10 @@ jobs:
           echo "Building version $VERSION"
           mkdir -p dist
           GOOS=linux GOARCH=amd64 go build -o dist/haldi-linux-amd64-$VERSION .
+          GOOS=linux GOARCH=arm go build -o dist/haldi-linux-amd64-$VERSION .
+          GOOS=linux GOARCH=arm64 go build -o dist/haldi-linux-amd64-$VERSION .
           GOOS=darwin GOARCH=amd64 go build -o dist/haldi-darwin-amd64-$VERSION .
+          GOOS=darwin GOARCH=arm64 go build -o dist/haldi-darwin-amd64-$VERSION .
 
       - name: Create GitHub release
         uses: softprops/action-gh-release@v1
@@ -43,4 +45,7 @@ jobs:
         with:
           files: |
             dist/haldi-linux-amd64-${{ github.ref_name }}
+            dist/haldi-linux-arm-${{ github.ref_name }}
+            dist/haldi-linux-arm64-${{ github.ref_name }}
             dist/haldi-darwin-amd64-${{ github.ref_name }}
+            dist/haldi-darwin-arm64-${{ github.ref_name }}
