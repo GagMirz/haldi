@@ -1,6 +1,4 @@
-### HALDI
-
-## About HALDI
+## Home
 
 A CLI tool designed to streamline and standardize project workflows. With haldi, you can:
 
@@ -11,9 +9,3 @@ A CLI tool designed to streamline and standardize project workflows. With haldi,
 
 
 haldi makes it easy to centralize and automate project-specific tasks, improving productivity and collaboration.
-
-## Info
-For information regarding to usage, contribution rules please check [documentation page](https://gagmirz.github.io/haldi/#/)
-
-## Supported me with coffee
-[!["Buy Me A Coffee"](https://www.buymeacoffee.com/assets/img/custom_images/orange_img.png)](https://www.buymeacoffee.com/gbraad)
