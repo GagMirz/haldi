@@ -3,6 +3,7 @@ package commands
 import (
 	"fmt"
 	"os"
+	"path/filepath"
 	"strings"
 
 	"haldi/internal/services"
@@ -22,13 +23,19 @@ var Apply = cli.Command{
 			path = "."
 		}
 
-		if !strings.HasSuffix(path, services.ManifestDirAbsPath) {
-			newSuffix := "haldi.json"
+		// TODO: Check paths in code, some bugs might be present for now
+		path, err := filepath.Abs(path)
+		if err != nil {
+			return fmt.Errorf("failed to get absolute path: %v", err)
+		}
+
+		haldiManifestFile := "haldi.json"
+		if !strings.HasSuffix(path, haldiManifestFile) {
 			if !strings.HasSuffix(path, "/") {
-				newSuffix = "/" + newSuffix
+				haldiManifestFile = "/" + haldiManifestFile
 			}
 
-			path = path + newSuffix
+			path = path + haldiManifestFile
 		}
 
 		// TODO: Do sanity checks on the manifest file
