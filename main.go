@@ -21,8 +21,8 @@ import (
 	"fmt"
 	"os"
 
-	"haldi/internal/commands"
-	"haldi/internal/services"
+	"anvil/internal/commands"
+	"anvil/internal/services"
 
 	"github.com/urfave/cli/v2"
 )
@@ -38,10 +38,10 @@ func main() {
 	services.InitConfig()
 
 	app := &cli.App{
-		Name:      "haldi",
+		Name:      "anvil",
 		Usage:     "Repository accessibility extender",
 		Version:   "v0.0.1",
-		UsageText: "haldi command [command options]",
+		UsageText: "anvil command [command options]",
 		Commands: []*cli.Command{
 			&commands.Init,
 			&commands.Config,

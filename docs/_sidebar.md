@@ -1,7 +1,7 @@
 - [Home](home.md)
 - [Installation](installation.md)
 - Contribution and Terms
-  - [Contributing to Haldi](contribution.md)
+  - [Contributing to Anvil](contribution.md)
   - [Code Of Conduct](code_of_conduct.md)
 - [License](license.md)
 - [Manifest Files](manifest.md)

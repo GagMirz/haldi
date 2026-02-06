@@ -4,12 +4,12 @@ import (
 	"fmt"
 	"os"
 
-	"haldi/internal/utils"
+	"anvil/internal/utils"
 )
 
 var (
-	ConfigPath         = "/.haldi/config.json"
-	ManifestPath       = "/.haldi/manifests"
+	ConfigPath         = "/.anvil/config.json"
+	ManifestPath       = "/.anvil/manifests"
 	HomeDir            string
 	ManifestDirAbsPath string
 )
@@ -42,13 +42,13 @@ func InitConfig() error {
 		// Create default config file
 		err := utils.WriteJson[Configs](configFileAbsPath, &Configs{Shell: "bash"})
 		if err != nil {
-			return fmt.Errorf("failed to create haldi default configurations: %v", err)
+			return fmt.Errorf("failed to create anvil default configurations: %v", err)
 		}
 	}
 
 	Cfg, err = utils.ReadJson[Configs](HomeDir + ConfigPath)
 	if err != nil {
-		return fmt.Errorf("failed to read haldi default configurations: %v", err)
+		return fmt.Errorf("failed to read anvil default configurations: %v", err)
 	}
 
 	return nil
@@ -57,7 +57,7 @@ func InitConfig() error {
 func OverwriteConfig() error {
 	err := utils.WriteJson[Configs](HomeDir+ConfigPath, Cfg)
 	if err != nil {
-		return fmt.Errorf("failed to write haldi default configurations: %v", err)
+		return fmt.Errorf("failed to write anvil default configurations: %v", err)
 	}
 
 	return nil

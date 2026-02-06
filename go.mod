@@ -1,4 +1,4 @@
-module haldi
+module anvil
 
 go 1.23
 

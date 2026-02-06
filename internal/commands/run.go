@@ -4,8 +4,8 @@ import (
 	"fmt"
 	"os"
 
-	"haldi/internal/services"
-	"haldi/internal/utils"
+	"anvil/internal/services"
+	"anvil/internal/utils"
 
 	"github.com/urfave/cli/v2"
 )
@@ -13,7 +13,7 @@ import (
 var Run = cli.Command{
 	Name:        "run",
 	Category:    "manifest",
-	Description: "run haldi manifest alias",
+	Description: "run anvil manifest alias",
 	Flags:       []cli.Flag{},
 	Action: func(cCtx *cli.Context) error {
 		name := cCtx.Args().Get(0)

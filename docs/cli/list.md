@@ -2,7 +2,7 @@
 
 ### Command
 ```bash
-haldi list
+anvil list
 ```
 Lists applied manifests for user.  
 Result:

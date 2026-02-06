@@ -3,7 +3,7 @@ package commands
 import (
 	"fmt"
 
-	"haldi/internal/services"
+	"anvil/internal/services"
 
 	"github.com/urfave/cli/v2"
 )
@@ -11,7 +11,7 @@ import (
 var List = cli.Command{
 	Name:        "list",
 	Category:    "manifest",
-	Description: "lists haldi manifests",
+	Description: "lists anvil manifests",
 	Flags:       []cli.Flag{},
 	Action: func(cCtx *cli.Context) error {
 		manifestNames, err := services.ListManifestNames()

@@ -6,8 +6,8 @@ import (
 	"path/filepath"
 	"strings"
 
-	"haldi/internal/services"
-	"haldi/internal/utils"
+	"anvil/internal/services"
+	"anvil/internal/utils"
 
 	"github.com/urfave/cli/v2"
 )
@@ -15,7 +15,7 @@ import (
 var Apply = cli.Command{
 	Name:        "apply",
 	Category:    "config",
-	Description: "applies haldi manifest",
+	Description: "applies anvil manifest",
 	Flags:       []cli.Flag{},
 	Action: func(cCtx *cli.Context) error {
 		path := cCtx.Args().Get(0)
@@ -29,13 +29,13 @@ var Apply = cli.Command{
 			return fmt.Errorf("failed to get absolute path: %v", err)
 		}
 
-		haldiManifestFile := "haldi.json"
-		if !strings.HasSuffix(path, haldiManifestFile) {
+		anvilManifestFile := "anvil.json"
+		if !strings.HasSuffix(path, anvilManifestFile) {
 			if !strings.HasSuffix(path, "/") {
-				haldiManifestFile = "/" + haldiManifestFile
+				anvilManifestFile = "/" + anvilManifestFile
 			}
 
-			path = path + haldiManifestFile
+			path = path + anvilManifestFile
 		}
 
 		// TODO: Do sanity checks on the manifest file
@@ -46,7 +46,7 @@ var Apply = cli.Command{
 			return fmt.Errorf("failed to read manifest: %v", err)
 		}
 
-		projectPath := strings.TrimSuffix(path, "/haldi.json")
+		projectPath := strings.TrimSuffix(path, "/anvil.json")
 		manifest.Path = projectPath
 
 		appliedManifestPath := services.ManifestDirAbsPath + "/" + manifest.Name + ".json"

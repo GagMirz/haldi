@@ -5,21 +5,21 @@ import (
 	"os"
 	"path/filepath"
 
-	"haldi/internal/commands/common"
-	"haldi/internal/services"
-	"haldi/internal/utils"
+	"anvil/internal/commands/common"
+	"anvil/internal/services"
+	"anvil/internal/utils"
 
 	"github.com/urfave/cli/v2"
 )
 
-var ManifestFileName = "haldi.json"
+var ManifestFileName = "anvil.json"
 
 var Init = cli.Command{
 	Name:        "init",
 	Category:    "config",
-	Description: "creates .haldi.json config file with basic structure",
+	Description: "creates .anvil.json config file with basic structure",
 	Flags: []cli.Flag{
-		common.GetPathFlag("Path, where to create .haldi.json, defaults to '.'"),
+		common.GetPathFlag("Path, where to create .anvil.json, defaults to '.'"),
 	},
 	Action: func(cCtx *cli.Context) error {
 		name := cCtx.Args().Get(0)

@@ -1,6 +1,6 @@
-## Contributing to Haldi
+## Contributing to Anvil
 
-Thank you for considering contributing to Haldi!  
+Thank you for considering contributing to Anvil!  
 I appreciate your time and effort to help improve this project.
 
 All types of contributions are encouraged and valued. Please make sure to read the rules before making your contribution and [Code of Conduct](code_of_conduct.md). It will make it a lot easier for maintainers and smooth out the experience for all involved. The community looks forward to your contributions.
@@ -29,10 +29,10 @@ All types of contributions are encouraged and valued. Please make sure to read t
 If you would like to request a new feature or suggest an enhancement for this project, please follow these steps:
 
 1. **Search for existing enhancement requests**  
-   Before submitting a new enhancement request, please check the [existing issues](https://github.com/GagMirz/haldi/issues) or [planning kanban Todo column](https://github.com/users/GagMirz/projects/1) to ensure your idea hasn't already been suggested. This helps to avoid duplicates and keeps the project organized.
+   Before submitting a new enhancement request, please check the [existing issues](https://github.com/GagMirz/anvil/issues) or [planning kanban Todo column](https://github.com/users/GagMirz/projects/1) to ensure your idea hasn't already been suggested. This helps to avoid duplicates and keeps the project organized.
 
 2. **Create a new issue**  
-   If you don’t find an existing request, create a new issue by clicking on the "New issue" button in the [Issues section](https://github.com/GagMirz/haldi/issues).
+   If you don’t find an existing request, create a new issue by clicking on the "New issue" button in the [Issues section](https://github.com/GagMirz/anvil/issues).
 
 3. **Choose**  
     `Feature request` issue template, fill and submit it.
@@ -45,10 +45,10 @@ If you would like to request a new feature or suggest an enhancement for this pr
 If you encounter a bug or have a feature request, please follow the steps below to report an issue:
 
 1. **Search for existing issues**  
-   Before creating a new issue, please check if the issue has already been reported by searching through the [existing issues](https://github.com/GagMirz/haldi/issues) or issue exists in [planning kanban Bugs column](https://github.com/users/GagMirz/projects/1). This will help avoid duplicates.
+   Before creating a new issue, please check if the issue has already been reported by searching through the [existing issues](https://github.com/GagMirz/anvil/issues) or issue exists in [planning kanban Bugs column](https://github.com/users/GagMirz/projects/1). This will help avoid duplicates.
 
 2. **Create a new issue**  
-   If you don’t find an existing issue, open a new one by clicking on the "New issue" button in the [Issues section](https://github.com/GagMirz/haldi/issues).
+   If you don’t find an existing issue, open a new one by clicking on the "New issue" button in the [Issues section](https://github.com/GagMirz/anvil/issues).
 
 3. **Choose**  
     `Bug report` issue template, fill and submit it.

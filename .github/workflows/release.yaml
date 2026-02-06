@@ -32,11 +32,11 @@ jobs:
           VERSION=${GITHUB_REF#refs/tags/}  # Extract the version from the tag (e.g., 'v1.0.0')
           echo "Building version $VERSION"
           mkdir -p dist
-          GOOS=linux GOARCH=amd64 go build -o dist/haldi-linux-amd64-$VERSION .
-          GOOS=linux GOARCH=arm go build -o dist/haldi-linux-amd64-$VERSION .
-          GOOS=linux GOARCH=arm64 go build -o dist/haldi-linux-amd64-$VERSION .
-          GOOS=darwin GOARCH=amd64 go build -o dist/haldi-darwin-amd64-$VERSION .
-          GOOS=darwin GOARCH=arm64 go build -o dist/haldi-darwin-amd64-$VERSION .
+          GOOS=linux GOARCH=amd64 go build -o dist/anvil-linux-amd64-$VERSION .
+          GOOS=linux GOARCH=arm go build -o dist/anvil-linux-amd64-$VERSION .
+          GOOS=linux GOARCH=arm64 go build -o dist/anvil-linux-amd64-$VERSION .
+          GOOS=darwin GOARCH=amd64 go build -o dist/anvil-darwin-amd64-$VERSION .
+          GOOS=darwin GOARCH=arm64 go build -o dist/anvil-darwin-amd64-$VERSION .
 
       - name: Create GitHub release
         uses: softprops/action-gh-release@v1
@@ -44,8 +44,8 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.ADMIN_GITHUB_TOKEN }}  # Use the GitHub token for authentication
         with:
           files: |
-            dist/haldi-linux-amd64-${{ github.ref_name }}
-            dist/haldi-linux-arm-${{ github.ref_name }}
-            dist/haldi-linux-arm64-${{ github.ref_name }}
-            dist/haldi-darwin-amd64-${{ github.ref_name }}
-            dist/haldi-darwin-arm64-${{ github.ref_name }}
+            dist/anvil-linux-amd64-${{ github.ref_name }}
+            dist/anvil-linux-arm-${{ github.ref_name }}
+            dist/anvil-linux-arm64-${{ github.ref_name }}
+            dist/anvil-darwin-amd64-${{ github.ref_name }}
+            dist/anvil-darwin-arm64-${{ github.ref_name }}

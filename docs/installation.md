@@ -3,7 +3,7 @@
 <!-- TODO: Add simpler way for installation -->
 
 ## Build files
-You can see latest releases and build files available in [GitHub Releases](https://github.com/GagMirz/haldi/releases)
+You can see latest releases and build files available in [GitHub Releases](https://github.com/GagMirz/anvil/releases)
 
 ## From source files
 
@@ -18,9 +18,9 @@ make build && make install
 
 These commands would
 - Build binaries from source
-- Install haldi terminal tool in ```/usr/local/bin```
-- On initial run, haldi will
-    - Create haldi configuration directory in user home as ```~/.haldi```
+- Install anvil terminal tool in ```/usr/local/bin```
+- On initial run, anvil will
+    - Create anvil configuration directory in user home as ```~/.anvil```
 
 ### Dev requirements
 - docsify (npm)

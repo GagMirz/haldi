@@ -5,8 +5,8 @@ import (
 	"os"
 	"path/filepath"
 
-	"haldi/internal/services"
-	"haldi/internal/utils"
+	"anvil/internal/services"
+	"anvil/internal/utils"
 
 	"github.com/urfave/cli/v2"
 )
@@ -14,7 +14,7 @@ import (
 var Remove = cli.Command{
 	Name:        "remove",
 	Category:    "manifest",
-	Description: "remove haldi manifest",
+	Description: "remove anvil manifest",
 	Flags:       []cli.Flag{},
 	Action: func(cCtx *cli.Context) error {
 		name := cCtx.Args().Get(0)
@@ -25,7 +25,7 @@ var Remove = cli.Command{
 				return err
 			}
 
-			path += "/haldi.json"
+			path += "/anvil.json"
 
 			manifest, err := utils.ReadJson[services.Manifest](path)
 			if err != nil {

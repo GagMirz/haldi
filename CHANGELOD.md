@@ -9,7 +9,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 
-- Docsify [documentation](https://gagmirz.github.io/haldi/#/)
+- Docsify [documentation](https://gagmirz.github.io/anvil/#/)
 - CLI tool (urfave/cli/v2)
 - config cli command
 - init cli command

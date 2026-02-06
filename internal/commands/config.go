@@ -3,8 +3,8 @@ package commands
 import (
 	"fmt"
 
-	"haldi/internal/services"
-	"haldi/internal/utils"
+	"anvil/internal/services"
+	"anvil/internal/utils"
 
 	"github.com/urfave/cli/v2"
 )
@@ -12,7 +12,7 @@ import (
 var Config = cli.Command{
 	Name:        "config",
 	Category:    "config",
-	Description: "configs haldi CLI default behavior",
+	Description: "configs anvil CLI default behavior",
 	Flags:       []cli.Flag{},
 	Action: func(cCtx *cli.Context) error {
 		// TODO: Add help message for subcommands
@@ -27,7 +27,7 @@ var Config = cli.Command{
 var show = &cli.Command{
 	Name:        "show",
 	Category:    "config",
-	Description: "shows haldi CLI default configurations",
+	Description: "shows anvil CLI default configurations",
 	Flags:       []cli.Flag{},
 	Action: func(cCtx *cli.Context) error {
 		attribute := cCtx.Args().Get(0)
@@ -48,13 +48,13 @@ var show = &cli.Command{
 var set = &cli.Command{
 	Name:        "set",
 	Category:    "config",
-	Description: "sets haldi CLI default configurations by attribute",
+	Description: "sets anvil CLI default configurations by attribute",
 	Flags:       []cli.Flag{},
 	Action: func(cCtx *cli.Context) error {
 		attribute := cCtx.Args().Get(0)
 
 		if attribute == "" {
-			return fmt.Errorf("please set attribute and value FE: `haldi config set shell /bin/bash`")
+			return fmt.Errorf("please set attribute and value FE: `anvil config set shell /bin/bash`")
 		}
 
 		switch attribute {

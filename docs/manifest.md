@@ -1,11 +1,11 @@
 ## Manifest file
 
 ### Example manifest
-With this example manifest yuo would be able to run npm in your projects backend directory regardless where are you in your terminal session by running ```haldi run haldi be```
+With this example manifest yuo would be able to run npm in your projects backend directory regardless where are you in your terminal session by running ```anvil run anvil be```
 
 ```json
 {
-    "name": "haldi",
+    "name": "anvil",
     "aliases": [
         {
             "command": "npm",

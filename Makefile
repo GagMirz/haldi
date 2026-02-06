@@ -1,4 +1,4 @@
-BINARY_NAME=haldi
+BINARY_NAME=anvil
 BUILD_DIR=./build
 BIN_DIR=/usr/local/bin
 
@@ -22,7 +22,7 @@ install:
 
 .PHONY: uninstall
 uninstall:
-	@echo "Removing haldi binary from $(INSTALLATION_DESTINATION)..."
+	@echo "Removing anvil binary from $(INSTALLATION_DESTINATION)..."
 	rm -rf $(INSTALLATION_DESTINATION)
 	@echo "Uninstallation completed!"
 

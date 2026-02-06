@@ -5,7 +5,7 @@ import (
 	"os"
 	"strings"
 
-	"haldi/internal/utils"
+	"anvil/internal/utils"
 )
 
 type Manifest struct {
